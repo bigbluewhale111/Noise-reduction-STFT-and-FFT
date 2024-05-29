@@ -24,8 +24,12 @@ def plot_spectrogram(signal, title):
     plt.savefig(f'{title}.png')
 
 def denoise_v2(input_audio, noise_profile, recover_file, n_grad_freq=2, n_grad_time=4, n_fft=2048, win_length=2048, hop_length=512, n_std_thresh=1.5, prop_decrease=0.6, visual=False):
-    noise_sample_rate, noise_data = wavfile.read(noise_profile)
-    sample_rate, data = wavfile.read(input_audio)
+    try:
+        noise_sample_rate, noise_data = wavfile.read(noise_profile)
+        sample_rate, data = wavfile.read(input_audio)
+    except:
+        print("Cannot read files")
+        quit()
 
     assert noise_sample_rate == sample_rate, "Audio and noise sample rates are not same"
 
@@ -98,8 +102,12 @@ def denoise_v2(input_audio, noise_profile, recover_file, n_grad_freq=2, n_grad_t
     wavfile.write(recover_file+'.wav', sample_rate, (recover_audio_sig*32768).astype(np.int16))
 
 def denoise(input_audio, noise_profile, recover_file, n_grad_freq=2, n_grad_time=4, n_fft=2048, win_length=2048, hop_length=512, n_std_thresh=1.5, prop_decrease=0.6, visual=False):
-    noise_sample_rate, noise_data = wavfile.read(noise_profile)
-    sample_rate, data = wavfile.read(input_audio)
+    try:
+        noise_sample_rate, noise_data = wavfile.read(noise_profile)
+        sample_rate, data = wavfile.read(input_audio)
+    except:
+        print("Cannot read files")
+        quit()
     assert noise_sample_rate == sample_rate, "Audio and noise sample rates are not same"
 
     noise_data = noise_data / 32768
