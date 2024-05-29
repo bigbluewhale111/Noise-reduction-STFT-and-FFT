@@ -5,9 +5,9 @@ pip install -r requirements.txt
 ```
 ## Running
 ```sh
-python app.py [-v] "AUDIO_WITH_NOISE.wav" "NOISE_PROFILE.wav"
+python app.py "AUDIO_WITH_NOISE.wav" "NOISE_PROFILE.wav"
 ```
-`-v` for visualize
+`-h` for help
 ## Files
 | Filename   | Description                                                  |
 |------------|--------------------------------------------------------------|
