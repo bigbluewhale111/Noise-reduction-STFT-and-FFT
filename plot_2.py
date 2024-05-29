@@ -80,5 +80,5 @@ axs[4].set_title('Cropped Smoothed Amplitude Spectrum FFT')
 axs[4].grid()
 
 plt.tight_layout()
-plt.savefig(f'hehehehehe.png')
+plt.savefig(f'fft_stft_demonstration.png')
 
